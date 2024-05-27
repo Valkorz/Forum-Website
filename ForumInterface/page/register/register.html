@@ -1,7 +1,31 @@
-<head style="background-color: whitesmoke">
-    <link rel="stylesheet" type="text/css" href="register.css">
-    <div id="card">
-        <h1>hi</h1>
+<head id="loginPage">
+    
+    <div id="loginRect" style="background-color: rgb(222, 233, 236);">
+        <body>
+            <link rel="stylesheet" type="text/css" href="styles.css">
+            <div id="content">    
+                <h1> Join </h1>
+                <h1 id="errorMsg"> Error: Undefined </h1>
+                <form>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="name"><br><br>
+                    <label for="email">E-mail:</label>
+                    <input type="text" id="email" name="mail"><br><br>
+                    <label for="password">Password:</label>
+                    <input type="text" id="password" name="pword"><br><br>
+                </form>
+
+                <button id="confirm">
+                    Join
+                </button>
+
+                <button id="Return">
+                    Return
+                </button>
+
+            </div>
+        </body>
     </div>
+    <script src="register.js"></script>
 
 </head>

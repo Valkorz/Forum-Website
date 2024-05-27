@@ -1,0 +1,103 @@
+#page{
+    background-color: rgb(233, 235, 255);
+    background-image: radial-gradient(aliceblue 5px, transparent 1px),
+    radial-gradient(aliceblue, 5px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;    
+    animation: move 1s linear infinite;
+}
+
+button{
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    background-color: aliceblue;
+    border-style: double;
+    border-color:black;
+    border-radius: 10%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+#Join{
+    transform: translate(250%, -75%);
+}
+#Login{
+    transform: translate(250%, 75%);
+}
+
+#Header{
+    width: 100%;
+    height: 200px;
+    display:flex;
+    background-color:aliceblue;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.4); 
+    border-radius: 5%;
+
+    /* Other styles... */
+    background-image: radial-gradient(white 5px, transparent 1px),
+    radial-gradient(white 5px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;    
+    animation: move 1s linear infinite;
+}
+
+#Board{
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    display:flex;
+    background-color:aliceblue;
+    box-shadow:0px 0px 10px rgba(0, 0, 0, 0.4); 
+    border-radius: 5%;
+
+    transform: translate(0, 10%);
+    justify-content: center;
+
+    /* Other styles... */
+    background-image: radial-gradient(white 5px, transparent 1px),
+    radial-gradient(white 5px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;    
+    animation: move 1s linear infinite;
+}
+
+h1{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;   
+    color: black;
+    position: absolute;
+}
+
+#Title{
+    margin-top: -100px;
+}
+#Username{
+    font-size: 20px;
+    margin-left: -75%;
+    margin-top: 10%;
+}
+#Icon{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    display: flex;
+    margin-left: -75%;
+    margin-top: -10%;
+}
+
+
+
+/* Keyframe the movement of the div background */
+@keyframes move {
+    0% {
+        background-position: 0 0, 15px 15px;
+    }
+    100% {
+        background-position: 30px 30px, 45px 45px;
+    }
+}

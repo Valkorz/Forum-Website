@@ -1,5 +1,9 @@
 const url = "http://192.168.15.7:5000/User/Create";
 
+document.getElementById("Return").addEventListener("click", function() {
+  window.location.href = '/';
+});
+
 document.getElementById("confirm").addEventListener("click", function() {
     
     //Get email and password inputs from form elements
@@ -28,12 +32,14 @@ document.getElementById("confirm").addEventListener("click", function() {
       })
       .then(data => {
         console.log('Success:', data);
+        alert(`Success: ${data}`);
         errorMsg.style.visibility = "hidden";
       })
       .catch((error) => {
         console.error('Error:', error);
         errorMsg.style.visibility = "visible";
-        errorMsg.textContent = error;     
+        errorMsg.textContent = error; 
+        alert(`Error: ${error}`);     
       }); 
         
     alert(`Logged in.`);

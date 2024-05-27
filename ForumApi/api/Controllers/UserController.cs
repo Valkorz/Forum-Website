@@ -43,11 +43,41 @@ namespace api.Controllers
 
         [HttpPost("Create")]
         public async Task<ActionResult> Create(User user){
-            user.Id = _context.Users.Count() + 1;
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            var database = await _context.Users.ToListAsync();
+            try{
+                if(database.Any(x => x.Email == user.Email)){
+                    throw new Exception($"Could not create: {user.Email} is already assigned to an existing account.");
+                }
+                user.Id = _context.Users.Count() + 1;
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
 
-            return Content($"Created: {user.ToString()}");
+                return Content($"Created: {user.ToString()}");
+            }
+            catch (Exception ex){
+                return BadRequest(ex.Message);
+            }     
+        }
+
+        [HttpPost("Login")]
+        public async Task<ActionResult> Login(string email, string password){
+            try {
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == userLogin.Email);
+                if (user == null) {
+                    return BadRequest("Invalid email or password.");
+                }
+
+                // Verify the password
+                if (if user.Password == password) {
+                    return BadRequest("Invalid email or password.");
+                }
+
+                // Create a token or session here and send it back to the client
+
+                return Ok("Login successful.");
+            } catch (Exception ex) {
+                return BadRequest(ex.Message);
+            }    
         }
 
         [HttpGet("Exists")]
@@ -59,8 +89,6 @@ namespace api.Controllers
         [HttpGet("GetUserList")]
         public async Task<List<User>> GetUserList(){
             return await _context.Users.ToListAsync();
-        }
-
-        
+        }    
     }
 }
