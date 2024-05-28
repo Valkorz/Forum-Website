@@ -62,13 +62,13 @@ namespace api.Controllers
         [HttpPost("Login")]
         public async Task<ActionResult> Login(string email, string password){
             try {
-                var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == userLogin.Email);
+                var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
                 if (user == null) {
                     return BadRequest("Invalid email or password.");
                 }
 
                 // Verify the password
-                if (if user.Password == password) {
+                if (user.Password == password) {
                     return BadRequest("Invalid email or password.");
                 }
 
@@ -87,8 +87,8 @@ namespace api.Controllers
         }
 
         [HttpGet("GetUserList")]
-        public async Task<List<User>> GetUserList(){
-            return await _context.Users.ToListAsync();
+        public async Task<IEnumerable<User>> GetUserList(){ 
+            return _context.Users;
         }    
     }
 }

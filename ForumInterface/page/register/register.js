@@ -1,4 +1,4 @@
-const url = "http://192.168.15.7:5000/User/Create";
+const url = "http://1.1.1.1:5000/User/Create";
 
 document.getElementById("Return").addEventListener("click", function() {
   window.location.href = '/';

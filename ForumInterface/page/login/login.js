@@ -1,4 +1,4 @@
-const url = "http://192.168.15.7:5000/User/Create";
+const url = "http://1.1.1.1:5000/User/Login";
 
 document.getElementById("Return").addEventListener("click", function() {
   window.location.href = '/';
@@ -26,7 +26,9 @@ document.getElementById("confirm").addEventListener("click", function() {
       }) 
       .then(response => { //Check if request was successful
           if(!response.ok){
-              throw new Error(`HTTP error! status: ${response.status} at ${url}`);
+            return response.json().then(err => {
+              throw new Error(`HTTP error! status: ${response.status} at ${url}, message: ${err.message}`);
+            });
           }
           return response.json();
       })
@@ -34,11 +36,14 @@ document.getElementById("confirm").addEventListener("click", function() {
         console.log('Success:', data);
         alert(`Success: ${data}`);
         errorMsg.style.visibility = "hidden";
+        localStorage.setItem("logged", true);
+        window.location.href = '/';
       })
       .catch((error) => {
         console.error('Error:', error);
         errorMsg.style.visibility = "visible";
         errorMsg.textContent = error; 
+        localStorage.setItem("logged", false);
         alert(`Error: ${error}`);     
       }); 
         
